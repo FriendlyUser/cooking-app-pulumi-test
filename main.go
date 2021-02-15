@@ -2,8 +2,9 @@ package main
 
 import (
 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudfunctions"
-	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+	// "github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"fmt"
 )
 
 func main() {
@@ -27,15 +28,20 @@ func main() {
 
 		// load files from cloud source repository
 		// Set arguments for creating the function resource.
+		fmt.Println("Failing here")
 		args := &cloudfunctions.FunctionArgs{
 			Runtime:             pulumi.String("dotnet3"),
-			SourceRepository: &cloudFunctions.FunctionSourceRepositoryArgs{
-				Url: "https://source.cloud.google.com/cooking-app-dli/github_friendlyuser_cooking-app?authuser=0",
+			SourceRepository: &cloudfunctions.FunctionSourceRepositoryArgs{
+				Url: pulumi.String("https://source.cloud.google.com/cooking-app-dli/github_friendlyuser_cooking-app"),
 			},
-			EntryPoint:          pulumi.String("Handler"),
+			// SourceRepository: &cloudfunctions.FunctionSourceRepositoryArgs{
+			// 	Url: "https://source.cloud.google.com/cooking-app-dli/github_friendlyuser_cooking-app?authuser=0",
+			// },
+			EntryPoint:          pulumi.String("HandleAsync"),
 			TriggerHttp:         pulumi.Bool(true),
 			AvailableMemoryMb:   pulumi.Int(128),
 		}
+
 
 		// Create the function using the args.
 		function, err := cloudfunctions.NewFunction(ctx, "basicFunction", args)
