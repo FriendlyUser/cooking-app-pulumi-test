@@ -4,7 +4,7 @@
 
 The runtime is golang for pulumi config and dotnet for the functions
 
-Monorepo for Cloud Functions with cooking app in flutter. wip - master still default?
+Monorepo for Cloud Functions with cooking app in flutter. wip - master still default
 
 To start 
 
