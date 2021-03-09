@@ -1,5 +1,8 @@
 [![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
 
+Work in progress, pulumi is not suitable for my work as I am a solo developer, dont want to pay anything to google cloud platform (no automatic cleanup).
+
+Might use in the future for stock analyzer (cloud functions to pull data from gcp).
 # cooking-app
 
 The runtime is golang for pulumi config and dotnet for the functions
